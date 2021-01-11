@@ -1,0 +1,4 @@
+<?jelly escape-by-default='true'?>
+<div>
+    This plugin makes it possible to build projects hosted on a <a href="https://gerritcodereview.com/">Gerrit Code Review</a> server with dependencies with Jenkins.
+</div>

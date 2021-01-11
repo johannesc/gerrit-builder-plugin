@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:c="/lib/credentials" xmlns:f="/lib/form">
+    <f:section title="${%Gerrit Builder Plugin}">
+        <f:entry field="gerritServerUrl" title="${%Gerrit Server URL}">
+            <f:textbox/>
+        </f:entry>
+        <f:entry title="${%Insecure HTTPS}" field="insecureHttps">
+            <f:checkbox/>
+        </f:entry>
+        <f:entry title="${%Credentials}" field="credentialsId">
+            <c:select/>
+        </f:entry>
+    </f:section>
+</j:jelly>
+
