@@ -1,6 +1,38 @@
 # gerrit-builder-plugin
 Jenkins plugin to build Gerrit changes with dependencies
 
+# Current Status
+This plugin is written as a "proof of concept" and should not be used in a production system.
+
+# Why this?
+All otheer (to me) known plugins focus on testing a single commit, usually in one repository. This plugin focus on testing all affected projects and utilizing the "automatic submodule update" and "submit whole topic" features that Gerrit offers.
+
+Consider this tree of changes in Gerrit where "main" is a project with sub as a submodule:
+
+```
+main     sub
+  C
+  |
+  B       S2     Marked with "TOPIC1"
+  |       |
+  A       S1
+```
+
+This plugin will group the commmit into 4 "Submit Groups": [A, S1, B+S2, C]. Each of these "Submit Groups" will be tested and given a review score individually.
+
+The following 7 builds will be made:
+```
+main-master-A
+main-master-S1
+sub-master-S1
+sub-master-S2-B
+main-master-S2-B
+main-master-C
+sub-master-C (not needed, but the code currently cannot understand this)
+```
+
+All of this is automatically figured out the the plugin with the information in Gerrit.
+
 # Configuring Gerrit
 
 ## Setup webhook
